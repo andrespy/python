@@ -39,8 +39,10 @@ plt.legend(handler_map={cobre: HandlerLine2D(numpoints=2)})
 plt.legend(handler_map={pvc_1: HandlerLine2D(numpoints=2)})
 plt.legend(handler_map={pvc_2: HandlerLine2D(numpoints=2)})
 
-plt.xlim(4600 , 40000)
-plt.ylim(10**-2 , 10**1)
+plt.legend(loc=2,prop={'size':7})              
+
+plt.xlim(4600 , 28000)
+plt.ylim(10**-2 , 1)
 
 #plt.title('Factor de friccion obtenido frente al numero de Reynolds')
 plt.grid(False)
@@ -50,6 +52,8 @@ plt.xlabel('Reynols')
 ax.set_yscale('log')
 ax.set_xscale('log')
 plt.show()
+
+#fig.savefig('image_output.png', dpi=300, format='png',  bbox_inches='tight')
 
 # limite 4900 reynols
 # limite 0.2 fricccion
