@@ -1,12 +1,21 @@
 from Tkinter import Tk
 from tkFileDialog import askopenfilename
 import vtk
-Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
-filename = askopenfilename() # show an "Open" dialog box and return the path to the selected file
+import ctypes
+
+while(True):
+    Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
+    filename = askopenfilename() # show an "Open" dialog box and return the path to the selected file
+    if filename.lower().endswith('.stl'):
+        break
+    else:
+        if not filename:
+            exit(1)
+        else:
+            ctypes.windll.user32.MessageBoxW(0, u"La extension ha de ser STL" , u"Error de extension" , 0)
 
 reader = vtk.vtkSTLReader()
 reader.SetFileName(filename)
-
 mapper = vtk.vtkPolyDataMapper()
 if vtk.VTK_MAJOR_VERSION <= 5:
     mapper.SetInput(reader.GetOutput())
