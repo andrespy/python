@@ -18,30 +18,25 @@ from numpy import genfromtxt
 # base_path = os.path(...relative/absolute path to your base folder...)
 # csv_file = os.path.join(base_path, 'Workbook2.csv')
 # datos = np.genfromtxt(csv_file, delimiter=';')
+Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
+filename = askopenfilename() # show an "Open" dialog box and return the path to the selected file
 datos = genfromtxt(
-            '/Users/ANDRES/Documents/2-q2/FLUIDOS/practica2/Workbook2.csv',
+            filename,
             delimiter=';')
 
 # FIXME: data unpacking is cool!
 # f_1, re_1, f_2, re_2, f_3, re_3, f_4, re_4 = datos  # datos[:8]
 
-f_1 = datos[0]
-re_1 = datos[1]
-f_2 = datos[2]
-re_2 = datos[3]
-f_3 = datos[4]
-re_3 = datos[5]
-f_4 = datos[6]
-re_4 = datos[7]
+
 
 
 fig, ax = plt.subplots()
 
 # FIXME: leave one space after every comma
-acero_galv = ax.plot(re_1,f_1,'o')
-cobre = ax.plot(re_2,f_2,'v')
-pvc_1 = ax.plot(re_3,f_3, 'o')
-pvc_2 = ax.plot(re_4,f_4, 'o')
+acero_galv = ax.scatter(re_1,f_1,'o')
+cobre = ax.scatter(re_2,f_2,'v')
+pvc_1 = ax.scatter(re_3,f_3, 'o')
+pvc_2 = ax.pl(re_4,f_4, 'o')
 
 # ADVANCED FIXME: even if unpacking is cool, avoid it when possible
 # styles = ['o', 'v', 'o', 'o']
